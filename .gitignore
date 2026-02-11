@@ -1,13 +1,62 @@
 # Python
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
 
-# Data
+# Environment
+.env
+.venv/
+venv/
+ENV/
+env/
+
+# Data - 保留目录结构，忽略具体数据文件
 data/*.csv
+data/*.json
+data/*.jsonl
 
-# Jupyter
+# Jupyter 输出数据 (notebooks 下的 jsonl)
+notebooks/*.jsonl
+
+# Jupyter checkpoints
 .ipynb_checkpoints/
+*.ipynb_checkpoints/
 
-# Models
-src/models/chinese-roberta-wwm-ext/
-src/models/text2vec-base-chinese/
+# Models - 预训练模型和权重（保留源代码）
+src/models/*.pth
+src/models/*.pt
+src/models/*.ckpt
+src/models/__pycache__/
+src/models/*-*/
+src/models/*-*-*/
+!src/models/*.py
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# 爬虫临时文件
+*_auth.json
+*_data.json
+
+# GitHub Pages 输出目录 (动态生成)
+html/data/*.json
+html/data/*.csv
+docs/data/*.json
+docs/data/*.csv

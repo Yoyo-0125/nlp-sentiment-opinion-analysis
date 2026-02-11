@@ -8,8 +8,8 @@ class LSTMClassifier(nn.Module):
         self.num_classes = num_classes
         self.embedding = nn.Embedding(vocab_size, embed_dim, padding_idx=pad_idx)
         self.lstm = nn.LSTM(
-            input_size=embed_dim, 
-            hidden_size=hid_dim, 
+            input_size=embed_dim,
+            hidden_size=hid_dim,
             num_layers=num_layers,
             batch_first=True,
             bidirectional=True
@@ -18,7 +18,7 @@ class LSTMClassifier(nn.Module):
         # self.dropout = nn.Dropout(dropout)
         self.sigmoid = nn.Sigmoid()
 
-        
+
     def forward(self, text, attention_mask=None):
         x = self.embedding(text)
         lstm_out, (h_n, c_n) = self.lstm(x)
