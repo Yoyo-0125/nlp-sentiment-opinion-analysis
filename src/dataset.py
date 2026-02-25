@@ -10,7 +10,6 @@ class SentimentDataset(Dataset):
         else:
             df = pd.read_csv(path_or_df)
         df['text'] = df['text'].astype(str)
-        # df['text'] = df['text'].str.replace("\n", "").str.replace("\r", "")
         df = df.dropna()
         # Ensure integer consecutive indices for __getitem__ using .loc[idx]
         self.data = df.reset_index(drop=True)
@@ -38,13 +37,13 @@ class SentimentDataset(Dataset):
             "label": torch.tensor(label)
         }
 
-def get_dataloader(path, tokenizer, batch_size=8, shuffle=True, max_len=128):
+def get_dataloader(path, tokenizer, batch_size=16, shuffle=True, max_len=256, num_workers=12):
     dataset = SentimentDataset(path, tokenizer, max_len)
-    return DataLoader(dataset, batch_size=batch_size, shuffle=shuffle)
+    dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=shuffle, num_workers=num_workers)
+    return dataloader
 
 def read_dataset(path):
     df = pd.read_csv(path)
     df['text'] = df['text'].astype(str)
-    # df['text'] = df['text'].str.replace("\n", "").str.replace
     df = df.dropna()
     return df
