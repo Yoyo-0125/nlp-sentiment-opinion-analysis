@@ -32,8 +32,8 @@ src/models/*.pth
 src/models/*.pt
 src/models/*.ckpt
 src/models/__pycache__/
-src/models/*-*/
-src/models/*-*-*/
+src/models/chinese-roberta-wwm-ext/
+src/models/text2vec-base-chinese/
 !src/models/*.py
 
 # IDE
@@ -66,15 +66,5 @@ html/data/*.csv
 docs/data/*.json
 docs/data/*.csv
 
-# 临时测试文件
-test_*.py
-test_*.bat
-test_*.json
-run_script.bat
-
-# 下载的 HTML 文件
-*.html
 *_files/
 CLAUDE_CODE.md
-CLAUDE_CODE.md
-*.diff
